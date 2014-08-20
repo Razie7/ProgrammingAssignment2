@@ -18,7 +18,7 @@ i <- NULL                  #intiating of null value for the the inverse variable
 
 }
 ##basically this function return result list of the four sub-functions (set,get, setinverse and getinverse)
-#
+# so this list could be accessd by the cacheSolve function
 
 cacheSolve <- function(x, ...) {
 
@@ -27,9 +27,8 @@ cacheSolve <- function(x, ...) {
                 message("getting cached inversed matrix")   # return the value from cach
                 return(i)
         }
-        matrix <- x$get()      # assign the entred matrix to the  
-        i <- solve(matrix)    # this is to compute the inverse of the input matrix
-        x$setinverse(i)       # call the set inverse matrix to assign the result of the inverse function
-        i
-        ## Return a matrix that is the inverse of 'x'
+        matrix <- x$get()      # assign the input matrix to the variable called (matrix) 
+        i <- solve(matrix)    # solve fucntion computes the inverse of the input matrix, the result assigned to (i)
+        x$setinverse(i)       # update the new result to i in the makecachematrix function so when getinverse() retrieves the proper value.  
+        i    ## Return of the inverse matrix of x.
 }
